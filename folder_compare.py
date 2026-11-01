@@ -120,13 +120,18 @@ def compare_folders(
         left = first_index.get(key)
         right = second_index.get(key)
         if left is None:
+            assert right is not None
             differences.append(
-                Difference(right.path, "Only in Folder 2", "Path is missing from Folder 1")
+                Difference(
+                    right.path, "Only in Folder 2", "Path is missing from Folder 1"
+                )
             )
             continue
         if right is None:
             differences.append(
-                Difference(left.path, "Only in Folder 1", "Path is missing from Folder 2")
+                Difference(
+                    left.path, "Only in Folder 1", "Path is missing from Folder 2"
+                )
             )
             continue
 
